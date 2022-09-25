@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Popup_Card_Opration.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div id="PlaceHolderHere"></div> 
+<button type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#addEmployee"
+data-url="@Url.Action("Create")">Create</button>
+
+@*<h1>Index</h1>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+              <button type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#EditEmployee"
+                  data-url="@Url.Action($"Edit/{item.Id}")">Edit</button>
+
+              <button type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#DetailsEmployee"
+                 data-url="@Url.Action($"Details/{item.Id}")">Details</button>
+
+              <button type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#deleteEmployee"
+                   data-url="@Url.Action($"delete/{item.Id}")">delete</button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
